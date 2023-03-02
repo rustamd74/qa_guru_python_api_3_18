@@ -28,5 +28,5 @@ def auth_user(demoshop):
 
 
 @pytest.fixture(scope="session")
-def regres():
-    return BaseSession(os.getenv('REQ_URL'))
+def regres_api():
+    return BaseSession(os.getenv('REG_URL'))

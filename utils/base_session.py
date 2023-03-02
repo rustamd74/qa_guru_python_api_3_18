@@ -1,3 +1,4 @@
+import allure
 from requests import Session, Response
 
 
@@ -7,4 +8,5 @@ class BaseSession(Session):
         self.url = url
 
     def request(self, method, url, **kwargs) -> Response:
-        return super().request(method, self.url + url, **kwargs)
+        with allure.step(f"{method} {url}"):
+            return super().request(method, self.url + url, **kwargs)
