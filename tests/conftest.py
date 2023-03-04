@@ -6,13 +6,15 @@ from selene.support.shared import browser
 
 from utils.base_session import BaseSession
 
+browser.config.base_url = "https://demowebshop.tricentis.com"
+
 load_dotenv()
 
 
 @pytest.fixture(scope="session")
 def demoshop():
-    api_url = os.getenv("API_URL")
-    return BaseSession(api_url)
+    api_url = BaseSession(os.getenv("API_URL"))
+    return api_url
 
 
 @pytest.fixture(scope="session")
@@ -21,7 +23,9 @@ def auth_user(demoshop):
                              allow_redirects=False)
     authorization_cookie = response.cookies.get("NOPCOMMERCE.AUTH")
 
-    browser.open('/Themes/DefaultClean/Content/images/logo.png')
+    response.status_code == 302
+
+    browser.open("")
 
     browser.driver.add_cookie({'name': "NOPCOMMERCE.AUTH", 'value': authorization_cookie})
     return browser
