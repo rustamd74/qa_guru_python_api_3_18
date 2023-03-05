@@ -23,8 +23,6 @@ def auth_user(demoshop):
                              allow_redirects=False)
     authorization_cookie = response.cookies.get("NOPCOMMERCE.AUTH")
 
-    response.status_code == 302
-
     browser.open("")
 
     browser.driver.add_cookie({'name': "NOPCOMMERCE.AUTH", 'value': authorization_cookie})

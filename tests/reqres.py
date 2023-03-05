@@ -1,4 +1,3 @@
-import pytest
 from pytest_voluptuous import S
 
 from schemas.user import create_single_user, login_successful, register_single_user, unregister_single_user, \
